@@ -442,7 +442,8 @@ public class ConsolesPanelPresenterTest {
     public void shouldShowCommanOutputWhenCommandSelected() throws Exception {
         presenter.consoles.put(PROCESS_ID, outputConsole);
 
-        presenter.onCommandSelected(PROCESS_ID);
+        ProcessTreeNode treeNode = mock(ProcessTreeNode.class);
+        presenter.onTreeNodeSelected(treeNode);
 
         verify(view).showProcessOutput(eq(PROCESS_ID));
         verify(view).setProcessRunning(anyString(), eq(true));
@@ -453,7 +454,8 @@ public class ConsolesPanelPresenterTest {
         when(outputConsole.isFinished()).thenReturn(true);
         presenter.consoles.put(PROCESS_ID, outputConsole);
 
-        presenter.onCommandSelected(PROCESS_ID);
+        ProcessTreeNode treeNode = mock(ProcessTreeNode.class);
+        presenter.onTreeNodeSelected(treeNode);
 
         verify(view).setProcessRunning(PROCESS_ID, false);
     }
@@ -463,7 +465,8 @@ public class ConsolesPanelPresenterTest {
         when(outputConsole.isFinished()).thenReturn(false);
         presenter.consoles.put(PROCESS_ID, outputConsole);
 
-        presenter.onCommandSelected(PROCESS_ID);
+        ProcessTreeNode treeNode = mock(ProcessTreeNode.class);
+        presenter.onTreeNodeSelected(treeNode);
 
         verify(view).setProcessRunning(PROCESS_ID, true);
     }
@@ -557,7 +560,8 @@ public class ConsolesPanelPresenterTest {
         TerminalPresenter terminal = mock(TerminalPresenter.class);
         presenter.terminals.put(PROCESS_ID, terminal);
 
-        presenter.onTerminalSelected(PROCESS_ID);
+        ProcessTreeNode treeNode = mock(ProcessTreeNode.class);
+        presenter.onTreeNodeSelected(treeNode);
 
         verify(view).showProcessOutput(eq(PROCESS_ID));
         verify(view, never()).setProcessRunning(PROCESS_ID, true);
