@@ -29,6 +29,7 @@ import org.eclipse.che.ide.ext.git.client.GitLocalizationConstant;
 import org.eclipse.che.ide.orion.compare.CompareConfig;
 import org.eclipse.che.ide.orion.compare.CompareFactory;
 import org.eclipse.che.ide.orion.compare.CompareWidget;
+import org.eclipse.che.ide.orion.compare.CompareWidget.CallBack;
 import org.eclipse.che.ide.orion.compare.FileOptions;
 import org.eclipse.che.ide.ui.loaders.request.LoaderFactory;
 import org.eclipse.che.ide.ui.window.Window;
@@ -78,7 +79,7 @@ final class CompareViewImpl extends Window implements CompareView {
         Button closeButton = createButton(locale.buttonClose(), "git-compare-close-btn", new ClickHandler() {
             @Override
             public void onClick(ClickEvent event) {
-                compare.getContent(new CompareWidget.CallBack() {
+                compare.getContent(new CallBack() {
                     @Override
                     public void onSuccess(String content) {
                         delegate.onCloseButtonClicked(content);

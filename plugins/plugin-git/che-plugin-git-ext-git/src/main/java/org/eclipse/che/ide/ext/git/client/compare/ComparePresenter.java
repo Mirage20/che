@@ -128,7 +128,7 @@ public class ComparePresenter implements CompareView.ActionDelegate {
             return;
         }
 
-        dialogFactory.createConfirmDialog("sdfgsdg", "dfhsdfh", new ConfirmCallback() {
+        dialogFactory.createConfirmDialog("Git compare", "would you like to save changes?", "Yes", "No", new ConfirmCallback() {
             @Override
             public void accepted() {
                 final String path = appContext.getCurrentProject().getRootProject().getName() + "/" + item;
@@ -143,14 +143,14 @@ public class ComparePresenter implements CompareView.ActionDelegate {
                         notificationManager.notify(exception.getMessage(), FAIL, false);
                     }
                 });
+                view.hide();
             }
         }, new CancelCallback() {
             @Override
             public void cancelled() {
-                //do nothing
+                view.hide();
             }
         }).show();
-        //view.hide();
     }
 
     private void showCompare(final String file, final String oldContent, final String revision) {

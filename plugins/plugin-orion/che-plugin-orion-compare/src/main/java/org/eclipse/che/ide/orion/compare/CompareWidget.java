@@ -132,7 +132,7 @@ public class CompareWidget extends Composite {
         });
     }
 
-    public String getContent(final CallBack callBack) {
+    public void getContent(final CallBack callBack) {
         framePromise.then(new Operation<Window>() {
             @Override
             public void apply(final Window arg) throws OperationException {
@@ -149,7 +149,5 @@ public class CompareWidget extends Composite {
                 }, false);
             }
         });
-
-        return "";
     }
 }

@@ -95,7 +95,7 @@
                     var oldContents = editors[0].getTextView().getText();
                     var newContents = editors[1].getTextView().getText();
                     var evt = document.createEvent('CustomEvent');
-                    evt.initCustomEvent("MyEventType", true, true, oldContents);
+                    evt.initCustomEvent("MyEventType", true, true, newContents);
                     window.dispatchEvent(evt);
                 }
             });
